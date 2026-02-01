@@ -32,6 +32,15 @@ echo "Grafana User: $grafana_user"
 echo "Grafana Password: $grafana_password"
 echo "------------------------"
 
+#Installation of Ingress Controller
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/aws/deploy.yaml
+
+#Wait for sometime for the pods to create
+kubectl get pods -n ingress-nginx
+
+#To get the external ip of ingress
+kubectl get svc ingress-nginx-controller -n ingress-nginx
+
 # Run below commands
 # chmod a+x access.sh
 # ./access.sh
